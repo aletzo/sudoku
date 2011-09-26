@@ -1,0 +1,95 @@
+#wrapper {
+    background: #fff;
+    height: 400px;
+    margin: 30px auto;
+    overflow: hidden;
+    width: 400px;
+}
+#status {
+    background: black;
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+#status a {
+    color: #fff;
+    font-size: 12px;
+    left: 10px;
+    position: relative;
+    text-decoration: none;
+}
+#status a:hover {
+    color: deepskyblue;
+}
+#status span {
+    line-height: 10px;
+}
+#status label:hover {
+    color: deepskyblue;
+}
+#status input[type="radio"] {
+    margin: 0 0 0 10px;
+    padding: 0;
+}
+#status label {
+    bottom: 2px;
+    color: #fff;
+    font-size: 10px;
+    position: relative;
+}
+#board {
+    border: 1px solid black;
+    clear: left;
+    float: right;
+    height: 288px;
+    overflow: hidden;
+    width: 288px;
+}
+#board div.cell {
+    border: 1px solid black;
+    float: left;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    width: 30px;
+}
+#board div.cell input {
+    border: none;
+    font-size: 20px;
+    height: 100%;
+    line-height: 100%;
+    text-align: center; 
+    width: 100%;
+}
+#board div.cell.gray input {
+    background: #dddddd;
+}
+#board div.cell div {
+    display: none;
+    height: 10px;
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+    width: 10px;
+}
+#board div.cell div.color.black {
+    background: black;
+    top: 0;
+}
+#board div.cell div.color.blue {
+    background: blue;
+    top: 10px;
+}
+#board div.cell div.color.green {
+    background: green;
+    top: 20px;
+}
+input.black {
+    color: black;
+}
+input.blue {
+    color: blue;
+}
+input.green {
+    color: green;
+}
