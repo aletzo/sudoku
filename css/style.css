@@ -37,6 +37,19 @@
     font-size: 10px;
     position: relative;
 }
+#stats {
+    float: left;
+    height: 100px;
+    overflow: hidden;
+    width: 170px;
+}
+#stats div {
+    float: left;
+    height: 20px;
+    margin: 5px;
+    overflow: hidden;
+    width: 45px;
+}
 #board {
     border: 1px solid black;
     clear: left;
@@ -55,41 +68,20 @@
 }
 #board div.cell input {
     border: none;
+    color: #777;
     font-size: 20px;
     height: 100%;
     line-height: 100%;
     text-align: center; 
     width: 100%;
 }
+#board div.cell input.readonly {
+    color: #000;
+}
+#board div.cell input.maybe {
+    color: orange;
+}
+
 #board div.cell.gray input {
     background: #dddddd;
-}
-#board div.cell div {
-    display: none;
-    height: 10px;
-    opacity: 0.5;
-    position: absolute;
-    right: 0;
-    width: 10px;
-}
-#board div.cell div.color.black {
-    background: black;
-    top: 0;
-}
-#board div.cell div.color.blue {
-    background: blue;
-    top: 10px;
-}
-#board div.cell div.color.green {
-    background: green;
-    top: 20px;
-}
-input.black {
-    color: black;
-}
-input.blue {
-    color: blue;
-}
-input.green {
-    color: green;
 }
