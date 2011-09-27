@@ -44,8 +44,6 @@ var _puzzles = [
 
 newPuzzle();
 
-calculateStats();
-
 $('#new').click(function() {
     newPuzzle();
 });
@@ -166,7 +164,9 @@ function newPuzzle() {
                 .addClass('readonly');
             }
         }
-    }   
+    }  
+    
+    calculateStats();
 }
 
 function calculateStats() {
