@@ -42,6 +42,10 @@ var _puzzles = [
 ]
 ];
 
+var _puzzle = [];
+
+var _stats = [0, 0, 0,   0, 0, 0,   0, 0, 0];
+
 newPuzzle();
 
 $('#new').click(function() {
@@ -129,6 +133,39 @@ $('div.cell input').blur(function() {
     calculateStats();
 });
 
+$('#save').click(function() {
+    
+    cookie = [];
+    
+    for (i = 0; i < 9; i++) {
+        x = i + 1;
+        for (j = 0; j < 9; j++) {
+            y = j + 1;
+            
+            cookie.push($('#cell_' + x + '_' + y + ' input').val());
+        }
+    }
+    
+    $.cookie('sudoku', escape(cookie.join(',')));
+});
+
+$('#load').click(function() {
+    
+    serialized = unescape($.cookie('sudoku')).split(',');
+    
+    console.log(serialized);
+    
+    for (i = 0; i < 9; i++) {
+        for (j = 0; j < 9; j++) {
+            _puzzle[i][j] = serialized[9 * i + j];
+        }
+    }
+    
+    console.log(_puzzle);
+    
+    loadPuzzle();
+});
+
 function getX(id) {
     coords = id.split('_');
     
@@ -146,13 +183,17 @@ function focusCell(cell) {
 }
 
 function newPuzzle() {
-    puzzle = _puzzles[Math.floor(Math.random()*_puzzles.length)];
+    _puzzle = _puzzles[Math.floor(Math.random()*_puzzles.length)];
     
+    loadPuzzle();
+}
+
+function loadPuzzle() {
     for (i = 0; i < 9; i++) {
         x = i + 1;
         for (j = 0; j < 9; j++) {
             y = j + 1;
-            value = puzzle[i][j];
+            value = _puzzle[i][j];
             
             if (value == 0) {
                 $('#cell_' + x + '_' + y + ' input').val('')
@@ -169,20 +210,24 @@ function newPuzzle() {
     calculateStats();
 }
 
+function resetStats() {
+    _stats = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+}
+
 function calculateStats() {
-    stats = [0, 0, 0,   0, 0, 0,   0, 0, 0];
+    resetStats();
     
     for (i = 0; i < 9; i++) {
         x = i + 1;
         for (j = 0; j < 9; j++) {
             y = j + 1;
                 
-            stats[$('#cell_' + x + '_' + y + ' input').val() - 1]++;
+            _stats[$('#cell_' + x + '_' + y + ' input').val() - 1]++;
         }
     }
     
     for (k = 0; k < 9; k++) {
         stat = k + 1;
-        $('#stats_' + stat + ' span').html(stats[k]);
+        $('#stats_' + stat + ' span').html(_stats[k]);
     }
 }
