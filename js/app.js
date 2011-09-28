@@ -134,7 +134,6 @@ $('div.cell input').blur(function() {
 });
 
 $('#save').click(function() {
-    
     cookie = [];
     
     for (i = 0; i < 9; i++) {
@@ -150,18 +149,13 @@ $('#save').click(function() {
 });
 
 $('#load').click(function() {
-    
     serialized = unescape($.cookie('sudoku')).split(',');
-    
-    console.log(serialized);
     
     for (i = 0; i < 9; i++) {
         for (j = 0; j < 9; j++) {
             _puzzle[i][j] = serialized[9 * i + j];
         }
     }
-    
-    console.log(_puzzle);
     
     loadPuzzle();
 });
